@@ -223,12 +223,13 @@ module.exports={
      create file in the controllers folder named Another.controller.js
 
 ```js
+// *** Aware & Alert: querying data using mongoose from mongodb is a async function so we have to use .then()
 // first import the model of the controller inside here
 const {AnotherModel} = require("../models/Another.model") // in order to query data from colliction you need to 
 
-let anotherController = (req,res)=>{
-    AnotherModel.find({}, data=>{
-        res.json(data)
+let anotherController = async (req,res)=>{
+    AnotherModel.find().then(data=>{
+        res.json(data);
     })
 }
 
@@ -240,6 +241,13 @@ module.exports= anotherController;
 ```js
 const {anotherController} =  require(./controller/Another.controller);
 ```
+
+- lets add new caller in the server.js and name it get data
+
+```js
+app.get('/get-data', anotherController)
+```
+
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
 ## Architecture
