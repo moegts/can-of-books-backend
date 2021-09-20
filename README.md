@@ -1,7 +1,7 @@
 # Project Name
 
 **Author**: Team Heros
-**Version**: 2.0.0
+**Version**: 1.1.0
 
 ## Overview
 
@@ -282,12 +282,26 @@ app.get('/get-data', anotherController)
 [Eslam Akram](https://github.com/eslamakram)
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-Name of feature: ________________________________
+- - -
 
-Estimate of time needed to complete: _____
+Name of feature: Set up your repositories
 
-Start time: _____
+Estimate of time needed to complete: 1
 
-Finish time: _____
+Start time: 6:00pm
 
-Actual time needed to complete: _____
+Finish time: 6:45pm
+
+Actual time needed to complete: 45 min
+
+- - -
+
+Name of feature: Storage
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 2:00am
+
+Finish time: 4:00am
+
+Actual time needed to complete: 2 hours
