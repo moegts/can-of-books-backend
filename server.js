@@ -8,14 +8,8 @@ const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 3001;
 const MONGO_SERVER = process.env.MONGO_SERVER;
-mongoose.connect(`${MONGO_SERVER}/canOfBooks`, {useNewUrlParser: true, useUnifiedTopology: true});
-
-app.get('/test', (request, response) => {
-
-  response.send('test request received')
-
-})
-
-
-
+const {seederController} =  require("./controllers/Seeder.controller");
+mongoose.connect(`${MONGO_SERVER}/CanOfBooks`, { useNewUrlParser: true, useUnifiedTopology: true });
+app.get('/', (request, response) => response.send('WELCOME TO THE SERVER 🔥'));
+app.get('/books', seederController)
 app.listen(PORT, () => console.log(`listening on ${PORT}`));

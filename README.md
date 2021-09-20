@@ -1,7 +1,7 @@
 # Project Name
 
 **Author**: Team Heros
-**Version**: 1.0.0
+**Version**: 2.0.0
 
 ## Overview
 
@@ -16,7 +16,7 @@
      in the root path on Ubuntu do this comand to install mongodb
 - - -
 
-- `sudo service monogodb start`
+- `sudo service mongodb start`
 
 - - -
      then do
@@ -73,7 +73,7 @@
      add the .env file with PORT=3000
      also add node .gitignore
 
-- `npm install express dotenv cors axios mongoose`
+- `PORT=3001`
 
 - - -
      we add this to conect mongo to our server
@@ -95,11 +95,12 @@ const mongoose = require("mongoose")
 ~~~
 - - -
      create schemas using mongodb
+     S is cabital in **String**
 
 ~~~js
 const bookSchema = new mongoose.Schema({
-    title:string,
-    description:string
+    title:String,
+    description:String
 })
 
 const bookModel =  mongoose.model('book', bookSchema);
@@ -128,11 +129,11 @@ module.exports={
 ~~~js
 const {seedBook} = require("./models/Book.model");
 // use this next line once only (not good pracice)
-app.get('/seed-data',(req.res)=>{
+app.get('/seed-data',(req,res)=>{
     seedBook();
     
     res.json({
-        "messege";"Book Object Created successfully"
+        "messege":"Book Object Created successfully"
     })
 })
 ~~~
@@ -227,8 +228,8 @@ module.exports={
 // first import the model of the controller inside here
 const {AnotherModel} = require("../models/Another.model") // in order to query data from colliction you need to 
 
-let anotherController = async (req,res)=>{
-    AnotherModel.find().then(data=>{
+let anotherController = (req,res)=>{
+     AnotherModel.find().then(data=>{
         res.json(data);
     })
 }
@@ -239,7 +240,7 @@ module.exports= anotherController;
 - now we go to the server.js and import the controler there
 
 ```js
-const {anotherController} =  require(./controller/Another.controller);
+const {anotherController} =  require("./controller/Another.controller");
 ```
 
 - lets add new caller in the server.js and name it get data
@@ -267,7 +268,7 @@ app.get('/get-data', anotherController)
 
 ## Change Log
 
-01-01-2001 4:59pm - Application now has a
+20-09-2021 4:00am - Application now has a working backend with API of /books
 
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
