@@ -5,7 +5,6 @@ const {BookSchema} = require("./Book.model");
 
 const SeederSchema = new mongoose.Schema({
     title:String,
-    books:[BookSchema],
     description:String,
     status:String,
     email:String

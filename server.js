@@ -9,12 +9,13 @@ app.use(cors());
 const PORT = process.env.PORT || 3001;
 // get the mongo server link from the process.env. and if its not working will auto switch to 3001
 const MONGO_SERVER = process.env.MONGO_SERVER;
+const ATLAS_API = process.env.ATLAS_API;
 app.use(express.json());
 //conect to the book seeder controller so i can use it here in the server.js
 const {seederController, createBookController, deleteBookController} =  require("./controllers/Seeder.controller"); //🔴
 // like this we link mongoose
 // also you need to add the folder you want to work on on your db list
-mongoose.connect(`${MONGO_SERVER}/bookstore`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`${ATLAS_API}`, { useNewUrlParser: true, useUnifiedTopology: true });
 const {seedSeeder} =require("./models/Seeder.model");
 
 app.post('/create-book', createBookController)
