@@ -30,7 +30,7 @@ const deleteBookController = (req, res) =>{
     })
 }
 
-const updateBookController = (req,res) =>{
+const updateBookController = async (req,res) =>{
     let id = req.params.id;
     let updatedData=req.body;
     SeederModel.findOne({_id:id}).then(data=>{
@@ -39,9 +39,11 @@ const updateBookController = (req,res) =>{
         data.description=updatedData.updatedData;
         data.email = updatedData.email;
         data.save();
-        SeederModel.find({}).then(data=>res.json(data));
     });
-
+    
+    setTimeout(()=>{
+        SeederModel.find({}).then(data=>res.json(data));
+    },250)
 }
 
 module.exports= {seederController, createBookController, deleteBookController, updateBookController}
