@@ -9,9 +9,10 @@ let seederController = (req, res) => {
 }
 
 const createBookController = async (req, res) =>{
-    let {title, description, email} = req.body;
+    let {title, description, email, status} = req.body;
     let newCreate = new SeederModel({
         title:title,
+        status:status,
         description:description,
         email:email,
     })
@@ -29,4 +30,18 @@ const deleteBookController = (req, res) =>{
     })
 }
 
-module.exports= {seederController, createBookController, deleteBookController}
+const updateBookController = (req,res) =>{
+    let id = req.params.id;
+    let updatedData=req.body;
+    SeederModel.findOne({_id:id}).then(data=>{
+        data.title=updatedData.title;
+        data.status=updatedData.status;
+        data.description=updatedData.updatedData;
+        data.email = updatedData.email;
+        data.save();
+        SeederModel.find({}).then(data=>res.json(data));
+    });
+
+}
+
+module.exports= {seederController, createBookController, deleteBookController, updateBookController}

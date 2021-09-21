@@ -12,7 +12,7 @@ const MONGO_SERVER = process.env.MONGO_SERVER;
 const ATLAS_API = process.env.ATLAS_API;
 app.use(express.json());
 //conect to the book seeder controller so i can use it here in the server.js
-const {seederController, createBookController, deleteBookController} =  require("./controllers/Seeder.controller"); //🔴
+const {seederController, createBookController, deleteBookController, updateBookController} =  require("./controllers/Seeder.controller"); //🔴
 // like this we link mongoose
 // also you need to add the folder you want to work on on your db list
 mongoose.connect(`${ATLAS_API}`, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -20,10 +20,11 @@ const {seedSeeder} =require("./models/Seeder.model");
 
 app.post('/create-book', createBookController)
 app.delete('/delete-book/:id', deleteBookController)
+app.put('/update-book/:id', updateBookController)
 
 // server welcome just to be sure server working
 app.get('/', (request, response) => response.send('WELCOME TO THE SERVER 🔥'));
-// when we call the seeder books it will run the seederController
+// when we call the seeder books it will run the seederController 
 app.get('/books', seederController)
 
 app.get('/seed-data',(req,res)=>{
