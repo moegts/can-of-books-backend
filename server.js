@@ -20,7 +20,7 @@ const {seedSeeder} =require("./models/Seeder.model");
 
 app.post('/create-book', createBookController)
 app.delete('/delete-book/:id', deleteBookController)
-app.put('/update-book/:id', updateBookController)
+app.patch('/update-book/:id', updateBookController)
 
 // server welcome just to be sure server working
 app.get('/', (request, response) => response.send('WELCOME TO THE SERVER 🔥'));
